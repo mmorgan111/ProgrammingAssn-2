@@ -4,7 +4,7 @@ from socket import *
 import sys
 
 
-def webServer(port=13331):
+def webServer(port=63342):
     serverSocket = socket(AF_INET, SOCK_STREAM)
 
     # Prepare a server socket
@@ -42,7 +42,7 @@ def webServer(port=13331):
             # Fill in end
 
             # Send the content of the requested file to the client
-            for i in f:  # for line in file
+            for i in f.len:  # for line in file
                 # Fill in start - send your html file contents #Fill in end
                 print(connectionSocket.send(f.encode()))
                 connectionSocket.close()  # closing the connection socket
@@ -63,4 +63,4 @@ def webServer(port=13331):
 
 
 if __name__ == "__main__":
-    webServer(13331)
+    webServer(63342)

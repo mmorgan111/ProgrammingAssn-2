@@ -4,7 +4,7 @@ from socket import *
 import sys
 
 
-def webServer(port=63341):
+def webServer(port=13331):
     serverSocket = socket(AF_INET, SOCK_STREAM)
 
     # Prepare a server socket
@@ -63,4 +63,4 @@ def webServer(port=63341):
 
 
 if __name__ == "__main__":
-    webServer(63341)
+    webServer(13331)

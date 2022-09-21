@@ -4,7 +4,7 @@ from socket import *
 import sys
 
 
-def webServer(port=13331):
+def webServer(port=63341):
     serverSocket = socket(AF_INET, SOCK_STREAM)
 
     # Prepare a server socket
@@ -26,10 +26,10 @@ def webServer(port=13331):
 
             # opens the client requested file.
             # Plenty of guidance online on how to open and read a file in python. How should you read it though if you plan on sending it through a socket?
-            f = open(filename[1:], 'r')  # fill in start #fill in end)
+            f = open(filename[1:], 'r')  # fill in start #fill in end
             # fill in end
 
-            outputdata = b"Content-Type: text/html; charset=UTF-8\r\n" \
+            #outputdata = b"Content-Type: text/html; charset=UTF-8\r\n" \
                 # Fill in start -This variable can store your headers you want to send for any valid or invalid request.
             valid = b"200 OK\r\n"
             invalid = b"404 Not Found\r\n"
@@ -44,7 +44,7 @@ def webServer(port=13331):
             # Send the content of the requested file to the client
             for i in f:  # for line in file
                 # Fill in start - send your html file contents #Fill in end
-                connectionSocket.send(f.encode())
+                print(connectionSocket.send(f.encode()))
                 connectionSocket.close()  # closing the connection socket
 
         except Exception as e:
@@ -63,4 +63,4 @@ def webServer(port=13331):
 
 
 if __name__ == "__main__":
-    webServer(13331)
+    webServer(63341)

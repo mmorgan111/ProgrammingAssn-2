@@ -25,31 +25,33 @@ def webServer(port=13331):
       
       #opens the client requested file. 
       #Plenty of guidance online on how to open and read a file in python. How should you read it though if you plan on sending it through a socket?
-      f = open(filename[1:], "r") #fill in start #fill in end
+      f = open(filename[1:], "r")
+      print(f)
+      #fill in start #fill in end
       #fill in end
       
       outputdata = b"Content-Type: text/html; charset=UTF-8\r\n"
       #Fill in start -This variable can store your headers you want to send for any valid or invalid request. 
       #Content-Type above is an example on how to send a header as bytes
-      valid = b"200 OK\r\n".decode()
-      invalid = b"404 Not Found \r\n".decode()
+      valid = "200 OK\r\n".encode()
+      invalid = "404 Not Found \r\n".encode()
       #Fill in end
 
       #Send an HTTP header line into socket for a valid request. What header should be sent for a response that is ok? 
       #Fill in start
-      connectionSocket.send(outputdata.encode())
+      print(connectionSocket.send(valid))
       #Fill in end
 
       #Send the content of the requested file to the client
       for i in f: #for line in file
         #Fill in start - send your html file contents #Fill in end
-        connectionSocket.send(f.encoding(i))
+        print(connectionSocket.send(f[i].encode()))
         connectionSocket.close() #closing the connection socket
       
     except Exception as e:
       # Send response message for invalid request due to the file not being found (404)
       #Fill in start
-      connectionSocket.send(invalid.encode())
+      print(connectionSocket.send(invalid))
       #Fill in end
 
 
